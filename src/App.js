@@ -1,26 +1,21 @@
 import React, { Component } from "react";
-import { MensajeSaludo } from "./MensajeSaludo"
-import { FormSaludo } from "./FormSaludo";
+import  { BrowserRouter as Router, Switch } from "react-router-dom";
+import Route from "react-router-dom/Route";
+import {Saludo} from "./Saludo";
+import {Pelicula} from "./Pelicula";
+import {PaginaNoExiste} from "./PaginaNoExiste";
 
 export class App extends Component {
-  state={
-    nombre:this.props.nombre,
-    mensaje:this.props.mensaje
-  };
-
-Saludoncion 
-mansajeNuevoSaludo = datos =>{
-  this.setState(datos);
-}
   render() {
-    const { nombre,mensaje } = this.state;
     return (
-    <div className="container">
-   
-      
-      <MensajeSaludo nombre ={nombre} mensaje={mensaje}/>
-      <FormSaludo alObtenerNuevoSaludo={this.mansajeNuevoSaludo}/>
-    </div>
+      <Router>
+        <Switch>
+          
+        <Route path="/" component={Saludo} exact/>
+        <Route path ="/Pelicula" component={Pelicula}/>
+        <Route component={PaginaNoExiste}/>
+        </Switch>
+      </Router>
     );
   }
 } 
