@@ -4,36 +4,22 @@ import { FormSaludo } from "./FormSaludo";
 
 export class App extends Component {
   state={
-    nombre:this.props.nombre
+    nombre:this.props.nombre,
+    mensaje:this.props.mensaje
   };
 
-  //declaro funcion
-alOprimirBoton = e =>{
-const nombre = e.target.nombre.value;
-  e.preventDefault();
-  if(typeof nombre==="string" && nombre.length>0){
-    this.setState({
-      nombre: nombre
-      });
-      e.target.nombre.value=""; 
-  }
-
-};
-
-//funcion 
-manejarNuevoNombre = nombre =>{
-  this.setState({
-    nombre:nombre
-  });
+Saludoncion 
+mansajeNuevoSaludo = datos =>{
+  this.setState(datos);
 }
   render() {
-    const { nombre } = this.state;
+    const { nombre,mensaje } = this.state;
     return (
     <div className="container">
    
       
-      <MensajeSaludo nombre ={nombre}/>
-      <FormSaludo alObtenerNuevoNombre={this.manejarNuevoNombre}/>
+      <MensajeSaludo nombre ={nombre} mensaje={mensaje}/>
+      <FormSaludo alObtenerNuevoSaludo={this.mansajeNuevoSaludo}/>
     </div>
     );
   }
