@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { MensajeSaludo } from "./MensajeSaludo"
+import { FormSaludo } from "./FormSaludo";
 
 export class App extends Component {
   state={
@@ -18,25 +20,24 @@ const nombre = e.target.nombre.value;
 
 };
 
+//funcion 
+manejarNuevoNombre = nombre =>{
+  this.setState({
+    nombre:nombre
+  });
+}
   render() {
-    const { texto }= this.props;
     const { nombre } = this.state;
     return (
     <div className="container">
-      <h1>Hola { nombre }!!!</h1>
-      <p>Parrafo de ejemplo { texto }</p>
-      <form onSubmit={ this.alOprimirBoton} >
-        <div className="form-group">
-          <label>Nombre</label>
-          <input type="text" name="nombre" id="nombre" className="form-control"/>
-          <button type="submit" className="btn btn-primary">Saludar</button>
-        </div>
-      </form>
+   
+      
+      <MensajeSaludo nombre ={nombre}/>
+      <FormSaludo alObtenerNuevoNombre={this.manejarNuevoNombre}/>
     </div>
     );
   }
 } 
-
 
 
 export default App;
